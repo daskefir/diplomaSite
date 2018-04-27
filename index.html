@@ -1,83 +1,81 @@
-Html Webpack Plugin:
-<pre>
-  Error: Child compilation failed:
-  Entry module not found: Error: Can't resolve 'C:\Users\User\Desktop\Diploma Site\index.html' in 'C:\Users\User\Desktop\Diploma Site':
-  Error: Can't resolve 'C:\Users\User\Desktop\Diploma Site\index.html' in 'C:\Users\User\Desktop\Diploma Site'
-  
-  - compiler.js:79 childCompiler.runAsChild
-    [Diploma Site]/[html-webpack-plugin]/lib/compiler.js:79:16
-  
-  - Compiler.js:242 compile
-    [Diploma Site]/[webpack]/lib/Compiler.js:242:11
-  
-  - Compiler.js:487 hooks.afterCompile.callAsync.err
-    [Diploma Site]/[webpack]/lib/Compiler.js:487:14
-  
-  
-  - Hook.js:35 AsyncSeriesHook.lazyCompileHook [as _callAsync]
-    [Diploma Site]/[tapable]/lib/Hook.js:35:21
-  
-  - Compiler.js:484 compilation.seal.err
-    [Diploma Site]/[webpack]/lib/Compiler.js:484:30
-  
-  
-  - Hook.js:35 AsyncSeriesHook.lazyCompileHook [as _callAsync]
-    [Diploma Site]/[tapable]/lib/Hook.js:35:21
-  
-  - Compilation.js:966 hooks.optimizeAssets.callAsync.err
-    [Diploma Site]/[webpack]/lib/Compilation.js:966:35
-  
-  
-  - Hook.js:35 AsyncSeriesHook.lazyCompileHook [as _callAsync]
-    [Diploma Site]/[tapable]/lib/Hook.js:35:21
-  
-  - Compilation.js:957 hooks.optimizeChunkAssets.callAsync.err
-    [Diploma Site]/[webpack]/lib/Compilation.js:957:32
-  
-  
-  - Hook.js:35 AsyncSeriesHook.lazyCompileHook [as _callAsync]
-    [Diploma Site]/[tapable]/lib/Hook.js:35:21
-  
-  - Compilation.js:952 hooks.additionalAssets.callAsync.err
-    [Diploma Site]/[webpack]/lib/Compilation.js:952:36
-  
-  
-  - Hook.js:35 AsyncSeriesHook.lazyCompileHook [as _callAsync]
-    [Diploma Site]/[tapable]/lib/Hook.js:35:21
-  
-  - Compilation.js:948 hooks.optimizeTree.callAsync.err
-    [Diploma Site]/[webpack]/lib/Compilation.js:948:32
-  
-  
-  - Hook.js:35 AsyncSeriesHook.lazyCompileHook [as _callAsync]
-    [Diploma Site]/[tapable]/lib/Hook.js:35:21
-  
-  - Compilation.js:890 Compilation.seal
-    [Diploma Site]/[webpack]/lib/Compilation.js:890:27
-  
-  - Compiler.js:481 hooks.make.callAsync.err
-    [Diploma Site]/[webpack]/lib/Compiler.js:481:17
-  
-  
-  - Compilation.js:758 _addModuleChain
-    [Diploma Site]/[webpack]/lib/Compilation.js:758:12
-  
-  - Compilation.js:637 errorAndCallback.bail.err
-    [Diploma Site]/[webpack]/lib/Compilation.js:637:6
-  
-  - Compilation.js:670 moduleFactory.create
-    [Diploma Site]/[webpack]/lib/Compilation.js:670:14
-  
-  - NormalModuleFactory.js:358 factory
-    [Diploma Site]/[webpack]/lib/NormalModuleFactory.js:358:22
-  
-  - NormalModuleFactory.js:118 resolver
-    [Diploma Site]/[webpack]/lib/NormalModuleFactory.js:118:21
-  
-  - NormalModuleFactory.js:198 asyncLib.parallel
-    [Diploma Site]/[webpack]/lib/NormalModuleFactory.js:198:22
-  
-  - async.js:2817 
-    [Diploma Site]/[neo-async]/async.js:2817:7
-  
-</pre><script type="text/javascript" src="bundle.js"></script><script type="text/javascript" src="bundle.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.scss">
+    <link rel="stylesheet" href="../modals/modalStyle.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+    <div id="clock"></div>
+    <h1 id="progres">Tasks in progres... </h1>
+    <div id="mainarea">
+        <div id="taskBar">
+            <div id="main" class="divPriority">Долгосрочные задания</div>
+            <div id="primary" class="divPriority">Первоочередные задания</div>
+            <div id="secondary" class="divPriority">Второстепенные задания</div>
+
+        </div>
+        <div id="completedTask">
+            <h2>Выполненные задания</h2>
+
+            <div id="secondBlock">Очистить историю</div>
+            <ul id="completedList"></ul>
+
+        </div>
+
+    </div>
+
+
+    <div id="win" style="display:none;">
+        <div class="overlay"></div>
+        <div class="visible">
+            <h2 id="h2AddNewTask">Добавить новое задание</h2>
+
+            <div class="content">
+                <input id="task" type="text" placeholder="Наименование задания">
+                <input id="taskStartTime" type="text" placeholder="Время начала">
+                <input id="taskFinishTime" type="text" placeholder="Время окончания"> </br>
+                <input class="taskPriority" type="radio" name="Priority" value="main"> Долгосрочные задания </br>
+                <input class="taskPriority" type="radio" name="Priority" value="primary"> Первоочередные задания </br>
+                <input class="taskPriority" type="radio" name="Priority" value="secondary"> Второстепенные задания
+
+            </div>
+
+            <button type="button" onClick="getElementById('win').style.display = 'none';">Закрыть</button>
+            <button type="button" id="createTask">Добавить</button>
+        </div>
+
+    </div>
+
+    <div class="modal">
+        <div class="modal-wrap">
+            <div class="modal-header">
+                <span class="closeModal">&times;</span>
+                <h3>Information about task</h3>
+            </div>
+            <div id="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <h3></h3>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="test"> </div>
+    <img id="addTask" src="../img/add(2).png" height="50" width="50" alt="addTask" onClick="getElementById('win').removeAttribute('style');" type="button">
+
+
+
+
+</body>
+
+</html>
